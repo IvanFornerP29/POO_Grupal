@@ -119,22 +119,22 @@ public class ControllerImplementation implements IController, ActionListener {
         String daoSelected = ((javax.swing.JCheckBox) (dSS.getAccept()[1])).getText();
         dSS.dispose();
         switch (daoSelected) {
-            case "ArrayList":
+            case "Constants.ArrayList":
                 dao = new DAOArrayList();
                 break;
-            case "HashMap":
+            case "Constants.HashMap":
                 dao = new DAOHashMap();
                 break;
-            case "File":
+            case "Constants.File":
                 setupFileStorage();
                 break;
-            case "File (Serialization)":
+            case "Constants.File (Serialization)":
                 setupFileSerialization();
                 break;
-            case "SQL - Database":
+            case "Constants.SQL - Database":
                 setupSQLDatabase();
                 break;
-            case "JPA - Database":
+            case "Constants.JPA - Database":
                 setupJPADatabase();
                 break;
         }
