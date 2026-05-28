@@ -15,11 +15,12 @@ class PersonTest {
     private String name = "John Doe";
     private Date dateOfBirth = new Date();
     private ImageIcon photo = new ImageIcon();
+    private String email = "john.doe@example.com";
 
     @BeforeEach
     void setUp() {
         person = new Person(nif);
-        personWithFullData = new Person(name, nif, dateOfBirth, photo);
+        personWithFullData = new Person(name, nif, dateOfBirth, photo, email);
     }
 
     @Test
@@ -61,6 +62,8 @@ class PersonTest {
         byte[] photoBytes = new byte[]{1, 2, 3};
         person.setPhotoOnlyJPA(photoBytes);
         assertArrayEquals(photoBytes, person.getPhotoOnlyJPA());
+        person.setEmail("jane.doe@example.com");
+        assertEquals("jane.doe@example.com", person.getEmail());
     }
 
     @Test
