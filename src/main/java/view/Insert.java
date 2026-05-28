@@ -26,13 +26,15 @@ import org.jdatepicker.JDatePicker;
  */
 public class Insert extends javax.swing.JDialog {
 
-    public Insert(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        DropPhotoListener d = new DropPhotoListener(photo, this);
-        DropTarget dropTarget = new DropTarget(photo, d);
-        insert.setEnabled(false);
-    }
+   public Insert(java.awt.Frame parent, boolean modal) {
+    super(parent, modal);
+    initComponents();
+    DropPhotoListener d = new DropPhotoListener(photo, this);
+    DropTarget dropTarget = new DropTarget(photo, d);
+    insert.setEnabled(false);
+    // Añadir texto descriptivo al área de foto
+    photo.setText("<html><center>PHOTO</center><br><center><b>Drag your file here</b></center><br><center><i>Supported format: PNG.</i></center><br><center><i>Max. size 64KB</i></center></html>");
+}
 
     public JButton getReset() {
         return reset;
@@ -77,7 +79,6 @@ public class Insert extends javax.swing.JDialog {
         nif = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        dateOfBirth = new org.jdatepicker.JDatePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Insert - People v1.1.0");
@@ -232,17 +233,6 @@ public class Insert extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(12, 24, 12, 24);
         getContentPane().add(jLabel2, gridBagConstraints);
 
-        dateOfBirth.setMaximumSize(new java.awt.Dimension(350, 22));
-        dateOfBirth.setMinimumSize(new java.awt.Dimension(350, 22));
-        dateOfBirth.setPreferredSize(new java.awt.Dimension(350, 22));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(12, 12, 12, 24);
-        getContentPane().add(dateOfBirth, gridBagConstraints);
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -316,7 +306,6 @@ public class Insert extends javax.swing.JDialog {
     }//GEN-LAST:event_nifKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.jdatepicker.JDatePicker dateOfBirth;
     private javax.swing.JButton insert;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
