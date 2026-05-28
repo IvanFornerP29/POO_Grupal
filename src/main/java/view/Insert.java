@@ -100,6 +100,11 @@ public Insert(java.awt.Frame parent, boolean modal) {
         insert.setMaximumSize(new java.awt.Dimension(187, 33));
         insert.setMinimumSize(new java.awt.Dimension(187, 33));
         insert.setPreferredSize(new java.awt.Dimension(187, 33));
+        insert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -314,6 +319,10 @@ public Insert(java.awt.Frame parent, boolean modal) {
             showInsert();
         }
     }//GEN-LAST:event_nifKeyPressed
+
+    private void insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertActionPerformed
+JOptionPane.showMessageDialog(this, "Person inserted successfully!", "Information", JOptionPane.INFORMATION_MESSAGE);
+    this.dispose();    }//GEN-LAST:event_insertActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton insert;
