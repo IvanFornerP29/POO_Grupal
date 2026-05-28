@@ -172,5 +172,16 @@ public class DAOFile implements IDAO {
         delete(p);
         insert(p);
     }
+    @Override
+    public int count() throws IOException {
+        int totalPeople = 0;
+        BufferedReader br = new BufferedReader(new FileReader(Routes.FILE.getDataFile()));
+        while (br.readLine() != null) {
+            totalPeople++;
+        }
+        br.close();
+        return totalPeople;
+    }
 
+    
 }

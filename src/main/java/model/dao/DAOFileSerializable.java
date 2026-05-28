@@ -172,4 +172,39 @@ public class DAOFileSerializable implements IDAO {
         insert(p);
     }
 
+    @Override
+    public int count() throws FileNotFoundException, IOException, ClassNotFoundException {
+
+        int totalPeople = 0;
+
+        FileInputStream fIS = null;
+        ObjectInputStream ois = null;
+
+        try {
+
+            fIS = new FileInputStream(Routes.FILES.getDataFile());
+            ois = new ObjectInputStream(fIS);
+
+            Person pr;
+
+            while ((pr = (Person) ois.readObject()) != null) {
+                totalPeople++;
+            }
+
+        } catch (java.io.EOFException ex) {
+            // Fin del archivo
+        } finally {
+
+            if (ois != null) {
+                ois.close();
+            }
+
+            if (fIS != null) {
+                fIS.close();
+            }
+        }
+
+        return totalPeople;
+    }
+
 }

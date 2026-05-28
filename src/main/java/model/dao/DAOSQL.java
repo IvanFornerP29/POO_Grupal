@@ -216,5 +216,13 @@ public class DAOSQL implements IDAO {
         for(File f : file.listFiles())
             f.delete();
     }
-
+@Override
+    public int count() throws Exception {
+        String SQL_COUNT = null;
+        try (Connection conn = connect(); 
+             Statement stmt = conn.createStatement(); 
+             ResultSet rs = stmt.executeQuery(SQL_COUNT)) {
+            return rs.next() ? rs.getInt("total") : 0;
+        }
+    }
 }
