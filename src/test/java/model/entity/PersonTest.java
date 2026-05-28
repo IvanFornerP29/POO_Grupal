@@ -45,7 +45,7 @@ class PersonTest {
         assertEquals(dateOfBirth, personWithFullData.getDateOfBirth());
         assertEquals(photo, personWithFullData.getPhoto());
     }
-
+//hoola
     @Test
     void testGettersAndSetters() {
         person.setName("Jane Doe");
