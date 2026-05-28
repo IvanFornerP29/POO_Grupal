@@ -225,14 +225,30 @@ public class ControllerImplementation implements IController, ActionListener {
         insert.setVisible(true);
     }
 
-    private void handleInsertPerson() {
+   private void handleInsertPerson() {
+        // 1. Recogemos el texto quitando espacios y manejamos el placeholder
+        String emailText = insert.getEmail().getText().trim();
+        if ("Enter email".equals(emailText)) {
+            emailText = "";
+        }
+    
+        // 2. Instanciamos el objeto Person básico
         Person p = new Person(insert.getNam().getText(), insert.getNif().getText());
+        
+        // 3. Agregamos los datos opcionales existentes
         if (insert.getDateOfBirth().getModel().getValue() != null) {
             p.setDateOfBirth(((GregorianCalendar) insert.getDateOfBirth().getModel().getValue()).getTime());
         }
         if (insert.getPhoto().getIcon() != null) {
             p.setPhoto((ImageIcon) insert.getPhoto().getIcon());
         }
+        
+        // 4. Inyectamos el Email si se ha introducido (¡Sin validar nada!)
+        if (!emailText.isEmpty()) {
+            p.setEmail(emailText);
+        }
+        
+        // 5. Guardamos y reseteamos el formulario
         insert(p);
         insert.getReset().doClick();
     }
