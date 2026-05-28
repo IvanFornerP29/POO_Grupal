@@ -26,14 +26,17 @@ import org.jdatepicker.JDatePicker;
  */
 public class Insert extends javax.swing.JDialog {
 
-   public Insert(java.awt.Frame parent, boolean modal) {
+public Insert(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
     initComponents();
     DropPhotoListener d = new DropPhotoListener(photo, this);
     DropTarget dropTarget = new DropTarget(photo, d);
     insert.setEnabled(false);
-    // Añadir texto descriptivo al área de foto
+    
+    // Issue: placeholder text for form fields
     photo.setText("<html><center>PHOTO</center><br><center><b>Drag your file here</b></center><br><center><i>Supported format: PNG.</i></center><br><center><i>Max. size 64KB</i></center></html>");
+    nif.putClientProperty("JTextField.placeholderText", "Enter NIF number, letter is calculated (e.g., 12345678)");
+    name.putClientProperty("JTextField.placeholderText", "Enter full name");
 }
 
     public JButton getReset() {
